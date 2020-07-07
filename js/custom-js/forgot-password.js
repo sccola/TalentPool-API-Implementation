@@ -19,16 +19,15 @@ forgotPasswordForm.addEventListener('submit', (e) => {
         body: JSON.stringify(emailInput)
     })
         .then(res => res.json() )
-        .then(data => console.log(data))
-        // .then((data) => {
-        //     // console.log(data),
-        //     // submitButtonV2.innerText = 'Sign Up';
-        //     if(data.status === 'success') {
-        //       $('#exampleModal').modal();
-        //       // document.querySelector('.loaderV2').style.display = 'none'
-        //     } else {
-        //       showAlert(data.error)
-        //     }
-        //   })
+        // .then(data => console.log(data))
+        .then((data) => {
+            console.log(data);
+            if(data.status === 'success') {
+              $("#forgot-password")[0].reset();
+              $('#exampleModal').modal();
+            } else {
+              showAlert(data.error)
+            }
+          })
         .catch(err => console.log(err));
 })
